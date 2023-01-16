@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+
+void main()
+{
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Secondpage(),
+    ),
+  );
+}
+
+class Secondpage extends StatefulWidget {
+  const Secondpage({Key? key}) : super(key: key);
+
+  @override
+  State<Secondpage> createState() => _SecondpageState();
+}
+
+class _SecondpageState extends State<Secondpage> {
+  @override
+  Widget build(BuildContext context) {
+
+    dynamic data = ModalRoute.of(context)!.settings.arguments ;
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Details",style: const TextStyle(fontSize: 20,color: Colors.white)),
+          centerTitle: true,
+        ),
+        body: Column(
+          children: [
+            Image.asset("${data[0]}",alignment: Alignment.topCenter,height: 300,width: 300,),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 470,width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 5,spreadRadius: 5,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(25),topLeft: Radius.circular(25)),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: FloatingActionButton(onPressed: (){} , child: Icon(Icons.favorite,color: Colors.white),backgroundColor: Colors.blue,),
+                    ),
+                    SizedBox(height: 20,),
+                    Text("Quantity:- ${data[2]}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30)),
+                    SizedBox(height: 20,),
+                    Text("Price:- Rs.${data[1]}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30)),
+                    SizedBox(height: 40,),
+                    InkWell(
+                      onTap: (){},
+                      child: Container(
+                        height: 50,width: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(child: Text("Add to cart",style: TextStyle(color: Colors.white,fontSize: 20))),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
