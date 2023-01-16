@@ -1,0 +1,315 @@
+import 'package:flutter/material.dart';
+
+void main()
+{
+  runApp(
+    MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Homepage()
+    ),
+  );
+}
+
+class Homepage extends StatefulWidget {
+  const Homepage({Key? key}) : super(key: key);
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  @override
+
+  List productimage = [
+    "assets/images/airpods.jpg",
+    "assets/images/applewatch1.jfif",
+    "assets/images/laptop.png",
+  ];
+
+  List productprice = ["2000","3000","4000"];
+  List Quantity = ["30","20","20"];
+
+  List l1 = [];
+  List l2 = [];
+  List l3 = [];
+
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.blue.shade800,
+        appBar: AppBar(
+          title: Center(child: Text("Explore Product",style: TextStyle(color: Colors.white))),
+          backgroundColor: Colors.blue.shade800,
+          elevation: 0,
+        ),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Container(
+                    height: 70,width: 300,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Icon(Icons.search,size: 25),
+                        ),
+                        SizedBox(width: 20,),
+                        Text("Apple  product",style:TextStyle(fontSize: 20))
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(width: 20,),
+                Container(
+                  height: 70,width: 120,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Icon(Icons.add_a_photo_outlined),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Text("Cards",style: TextStyle(color: Colors.white,fontSize: 20)),
+                )
+              ],
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Container(
+                      height: 400,width: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset("${productimage[0]}",alignment: Alignment.topCenter),
+                          Center(child: Text("Rs. 2000",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),)),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Text("Airpods",style: TextStyle(color: Colors.blue.shade900,fontSize: 20,fontWeight: FontWeight.bold),),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Icon(Icons.star,color: Colors.amber),
+                              ),
+                              Icon(Icons.star,color: Colors.amber),
+                              Icon(Icons.star,color: Colors.amber),
+                              Icon(Icons.star,color: Colors.amber),
+                              Icon(Icons.star_border,color: Colors.amber)
+                            ],
+                          ),
+                          SizedBox(height: 20,),
+                          Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+
+                                  l1.add(productimage[0]);
+                                  l1.add(productprice[0]);
+                                  l1.add(Quantity[0]);
+                                  Navigator.pushNamed(context, 'second',arguments: l1);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text("see the details >",style: TextStyle(color: Colors.blue.shade900,fontSize: 20),),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Container(
+                          height: 400,width: 300,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20),
+                                child: Image.asset("${productimage[1]}",alignment: Alignment.topCenter,height: 200,width: 200,),
+                              ),
+                              Center(child: Text("Rs. 3000",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),)),
+                              SizedBox(height: 20,),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: Text("Apple watch",style: TextStyle(color: Colors.blue.shade900,fontSize: 20,fontWeight: FontWeight.bold),),
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 20,),
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10),
+                                    child: Icon(Icons.star,color: Colors.amber),
+                                  ),
+                                  Icon(Icons.star,color: Colors.amber),
+                                  Icon(Icons.star,color: Colors.amber),
+                                  Icon(Icons.star,color: Colors.amber),
+                                  Icon(Icons.star_border,color: Colors.amber)
+                                ],
+                              ),
+                              SizedBox(height: 20,),
+                              Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+
+                                      l2.add(productimage[1]);
+                                      l2.add(productprice[1]);
+                                      l2.add(Quantity[1]);
+                                      Navigator.pushNamed(context, 'second',arguments: l2);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 10),
+                                      child: Text("see the details >",style: TextStyle(color: Colors.blue.shade900,fontSize: 20),),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Container(
+                      height: 400,width: 300,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0),
+                            child: Image.asset("${productimage[2]}",alignment: Alignment.topCenter,height: 220,width: 220,),
+                          ),
+                          Center(child: Text("Rs. 4000",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),)),
+                          SizedBox(height: 20,),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Text("Apple Laptop",style: TextStyle(color: Colors.blue.shade900,fontSize: 20,fontWeight: FontWeight.bold),),
+                              )
+                            ],
+                          ),
+                          SizedBox(height: 20,),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Icon(Icons.star,color: Colors.amber),
+                              ),
+                              Icon(Icons.star,color: Colors.amber),
+                              Icon(Icons.star,color: Colors.amber),
+                              Icon(Icons.star,color: Colors.amber),
+                              Icon(Icons.star_border,color: Colors.amber)
+                            ],
+                          ),
+                          SizedBox(height: 20,),
+                          Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+
+                                  l3.add(productimage[2]);
+                                  l3.add(productprice[2]);
+                                  l3.add(Quantity[2]);
+                                  Navigator.pushNamed(context, 'second',arguments: l3);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text("see the details >",style: TextStyle(color: Colors.blue.shade900,fontSize: 20),),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 40,),
+            Container(
+              height: 70,width: 250,
+              decoration: BoxDecoration(
+                borderRadius:  BorderRadius.circular(27),
+                color: Colors.blue.shade900,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 50,width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:  BorderRadius.circular(15),
+                    ),
+                    child:  Icon(Icons.favorite_border,color: Colors.blue.shade900),
+                  ),
+                  SizedBox(width: 10,),
+                  Container(
+                    height: 50,width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:  BorderRadius.circular(15),
+                    ),
+                    child:  Icon(Icons.shopping_bag_outlined,color: Colors.blue.shade900),
+                  ),
+                  SizedBox(width: 10,),
+                  Container(
+                    height: 50,width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:  BorderRadius.circular(15),
+                    ),
+                    child:  Icon(Icons.shopping_bag_outlined,color: Colors.blue.shade900),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
